@@ -1,6 +1,7 @@
 package com.leejubutu.todo.item.controller;
 
 import com.leejubutu.todo.item.domain.Item;
+import com.leejubutu.todo.item.dto.request.ItemDeleteRequest;
 import com.leejubutu.todo.item.dto.request.ItemRequest;
 import com.leejubutu.todo.item.dto.request.ItemUpdateRequest;
 import com.leejubutu.todo.item.dto.response.ItemResponse;
@@ -29,5 +30,10 @@ public class ItemController {
     @PatchMapping("/todo/update")
     public void update(@RequestBody ItemUpdateRequest request){
         itemService.updateItem(request);
+    }
+
+    @DeleteMapping("/todo/delete")
+    public void delete(@RequestBody ItemDeleteRequest itemDeleteRequest){
+        itemService.deleteItem(itemDeleteRequest);
     }
 }

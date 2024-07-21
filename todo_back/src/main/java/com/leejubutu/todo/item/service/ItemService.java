@@ -1,6 +1,7 @@
 package com.leejubutu.todo.item.service;
 
 import com.leejubutu.todo.item.domain.Item;
+import com.leejubutu.todo.item.dto.request.ItemDeleteRequest;
 import com.leejubutu.todo.item.dto.request.ItemRequest;
 import com.leejubutu.todo.item.dto.request.ItemUpdateRequest;
 import com.leejubutu.todo.item.dto.response.ItemResponse;
@@ -41,5 +42,10 @@ public class ItemService {
         Item item = itemRepository.findById(itemUpdateRequest.getItemId()).orElseThrow(ExceptionInInitializerError::new);
         item.updateContent(itemUpdateRequest.getContent());
 //        itemRepository.save(item);
+    }
+
+    @Transactional
+    public void deleteItem(ItemDeleteRequest itemDeleteRequest){
+        itemRepository.deleteById(itemDeleteRequest.getItemId());
     }
 }
