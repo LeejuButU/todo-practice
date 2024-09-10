@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import ListArea from "./ListArea";
+import Header from "./components/Header";
 import { useEffect, useState } from "react";
 
 const MainLayoutStyle = styled.div`
+  background-color: #000;
   padding: 0px 8px;
   display: flex;
   flex-direction: column;
-  background: white;
+  height: 100vh;
 `;
 
 const MainLayout = (props) => {
@@ -14,9 +16,14 @@ const MainLayout = (props) => {
   const [count, setCount] = useState(0);
 
   const getItems = async () => {
-    const data = await fetch("http://localhost:8080/todo").then((res) => {
-      return res.json();
-    });
+    const data = await fetch("http://localhost:8080/todo")
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        console.log(err);
+        return [];
+      });
 
     console.log(data);
 
@@ -73,7 +80,7 @@ const MainLayout = (props) => {
 
   return (
     <MainLayoutStyle>
-      <h1>Todo List</h1>
+      <Header />
       <ListArea items={items} onRemove={removeItem} onSave={saveItem} />
       <button onClick={addItem}>add</button>
     </MainLayoutStyle>
