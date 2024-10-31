@@ -24,4 +24,8 @@ public class Item {
         content = a;
         isChecked = b;
     }
+
+    public void updateContent(String newContent){
+        this.content = newContent;
+    }
 }
