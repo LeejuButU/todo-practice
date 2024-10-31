@@ -2,10 +2,12 @@ import styled from "styled-components";
 import ListArea from "./ListArea";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
+import FriendList from "./components/FriendList";
+import Category from "./components/Category/Category";
 
 const MainLayoutStyle = styled.div`
   background-color: #000;
-  padding: 0px 8px;
+  padding: 0px 24px;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -80,9 +82,14 @@ const MainLayout = (props) => {
 
   return (
     <MainLayoutStyle>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      />
       <Header />
+      <FriendList />
+      <Category onClick={addItem} />
       <ListArea items={items} onRemove={removeItem} onSave={saveItem} />
-      <button onClick={addItem}>add</button>
     </MainLayoutStyle>
   );
 };

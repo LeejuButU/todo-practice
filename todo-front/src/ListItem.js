@@ -7,6 +7,10 @@ const ListItemStyle = styled.div`
   font-size: 20px;
 `;
 
+const ListCheckBox = styled.input`
+  background-color: #222;
+`;
+
 const ListItem = (props) => {
   const { content, onRemove, itemKey, onSave } = props;
   let newContent;
@@ -17,28 +21,30 @@ const ListItem = (props) => {
 
   return (
     <ListItemStyle>
+      <ListCheckBox type="checkbox"></ListCheckBox>
       <input
         className="content-input"
+        style={{ background: "#000", color: "#fff", fontWeight: "bold" }}
         type="text"
         defaultValue={content}
         onChange={onChange}
       />
-      <input type="checkbox" />
-      <button
+      <span
+        class="material-symbols-outlined"
+        style={{ color: "#FC6160", cursor: "pointer" }}
         onClick={() => {
           console.log(itemKey);
           onRemove(itemKey);
         }}
       >
         delete
-      </button>
-      <button
-        onClick={() => {
-          onSave(itemKey, newContent);
-        }}
+      </span>
+      <span
+        class="material-symbols-outlined"
+        style={{ color: "#5683F8", cursor: "pointer" }}
       >
-        save
-      </button>
+        check_small
+      </span>
     </ListItemStyle>
   );
 };
