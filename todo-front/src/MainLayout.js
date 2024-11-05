@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import FriendList from "./components/FriendList";
 import Category from "./components/Category/Category";
+import Profile from "./components/Profile/Profile";
+import Calender from "./components/Calender/Calender";
 
 const MainLayoutStyle = styled.div`
   background-color: #000;
@@ -11,6 +13,21 @@ const MainLayoutStyle = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+`;
+
+const SubLayoutStyle = styled.div`
+  display: flex;
+`;
+
+const LeftSideStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
+
+const RightSideStyle = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const MainLayout = (props) => {
@@ -88,8 +105,16 @@ const MainLayout = (props) => {
       />
       <Header />
       <FriendList />
-      <Category onClick={addItem} />
-      <ListArea items={items} onRemove={removeItem} onSave={saveItem} />
+      <SubLayoutStyle>
+        <LeftSideStyle>
+          <Profile/>
+          <Calender/>
+        </LeftSideStyle>
+        <RightSideStyle>
+          <Category onClick={addItem} />
+          <ListArea items={items} onRemove={removeItem} onSave={saveItem} />
+        </RightSideStyle>
+      </SubLayoutStyle>
     </MainLayoutStyle>
   );
 };
