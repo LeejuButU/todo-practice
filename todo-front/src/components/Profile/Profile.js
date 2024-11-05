@@ -16,15 +16,25 @@ const InfoStyle = styled.div`
 	width: 60%;
 `;
 
+const NicknameStyle = styled.div`
+	font-weight: 900;
+	font-size: 18px;
+`;
+
+const IntroduceStyle = styled.div`
+	font-size: 12px;
+	color: grey;
+`;
+
 const Profile = (props) => {
   return (
     <ProfileStyle>
 			<FriendButton/>
 			<InfoStyle>
-				name
-				<div>intro</div>
+				<NicknameStyle>에버듀</NicknameStyle>
+				<IntroduceStyle>^ㅇ^</IntroduceStyle>
 			</InfoStyle>
-      diary icon
+      😀
     </ProfileStyle>
   );
 };
