@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 const ListItemStyle = styled.div`
   display: flex;
-  border: solid #333333 1px;
+  /* border: solid #333333 1px; */
   margin: 4px 0px;
   font-size: 20px;
 `;
 
 const ListCheckBox = styled.input`
-  background-color: #222;
+  display: inline-block;
+  width: 30px;
+  background: #222;
 `;
 
 const ListItem = (props) => {
@@ -24,7 +26,7 @@ const ListItem = (props) => {
       <ListCheckBox type="checkbox"></ListCheckBox>
       <input
         className="content-input"
-        style={{ background: "#000", color: "#fff", fontWeight: "bold" }}
+        style={{ background: "#000", color: "#fff", fontWeight: "bold", outline: 0, borderWidth: "0 0 2px" }}
         type="text"
         defaultValue={content}
         onChange={onChange}
@@ -42,6 +44,10 @@ const ListItem = (props) => {
       <span
         class="material-symbols-outlined"
         style={{ color: "#5683F8", cursor: "pointer" }}
+        onClick={() => {
+          console.log(itemKey);
+          onSave(itemKey);
+        }}
       >
         check_small
       </span>
